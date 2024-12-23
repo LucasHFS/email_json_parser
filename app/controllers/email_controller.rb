@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'application_controller'
+require_relative '../services/email_parser'
 
 class EmailController < ApplicationController
   post '/parse_email' do
