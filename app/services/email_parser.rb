@@ -1,6 +1,7 @@
 require 'mail'
 require 'httparty'
 require 'nokogiri'
+require 'open-uri'
 
 class EmailParser
   def self.extract_json(email_source)
