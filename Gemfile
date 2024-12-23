@@ -1,10 +1,19 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
+gem 'httparty'
+gem 'json'
 gem 'mailparser'
 gem 'sinatra'
-gem 'json'
-gem 'httparty'
-gem 'pry'
-gem 'rspec'
+
+group :development, :test do
+  gem 'pry'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec', require: false
+end
+
+group :test do
+  gem 'rspec'
+end
