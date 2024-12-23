@@ -44,7 +44,7 @@ class EmailParser
     when Net::HTTPSuccess
       response.body
     when Net::HTTPRedirection
-      fetch_content_from_url(response['location']) # Follow the redirection
+      fetch_content_from_url(response['location'])
     else
       raise "Error fetching email from URL: #{response.message} (#{response.code})"
     end

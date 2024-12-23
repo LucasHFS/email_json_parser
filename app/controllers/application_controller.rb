@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# controllers/application_controller.rb
 require 'sinatra/base'
 require 'json'
 require 'logger'

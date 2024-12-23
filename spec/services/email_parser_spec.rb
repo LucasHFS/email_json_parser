@@ -22,7 +22,6 @@ RSpec.describe EmailParser do
           json_url = 'https://api.github.com/users/lucashfs/repos'
           stubbed_response = double(body: '{"key":"value"}', headers: { 'content-type' => 'application/json' })
 
-          # Stub HTTParty.get for the JSON link
           allow(HTTParty).to receive(:get).with(json_url).and_return(stubbed_response)
 
           result = EmailParser.extract_json(email_source)
@@ -45,7 +44,6 @@ RSpec.describe EmailParser do
             headers: { 'content-type' => 'application/json' }
           )
 
-          # Stub HTTParty.get for the initial page link and nested JSON link
           allow(HTTParty).to receive(:get).with(page_url).and_return(page_response)
           allow(HTTParty).to receive(:get).with(nested_json_url).and_return(json_response)
 
@@ -57,9 +55,6 @@ RSpec.describe EmailParser do
       context 'and no JSON is found' do
         it 'returns nil' do
           email_source = File.join(fixtures_path, 'email_without_json.eml')
-
-          # Ensure the fixture file exists
-          expect(File.exist?(email_source)).to be true
 
           result = EmailParser.extract_json(email_source)
           expect(result).to be_nil
@@ -73,7 +68,6 @@ RSpec.describe EmailParser do
           email_url = 'https://example.com/email_with_json_attachment.eml'
           email_content = File.read(File.join(fixtures_path, 'email_with_json_attachment.eml'))
 
-          # Stub fetch_email_content to return the actual email content
           allow(EmailParser).to receive(:fetch_email_content).with(email_url).and_return(email_content)
 
           result = EmailParser.extract_json(email_url)
@@ -88,9 +82,7 @@ RSpec.describe EmailParser do
           json_url = 'https://api.github.com/users/lucashfs/repos'
           stubbed_response = double(body: '{"key":"value"}', headers: { 'content-type' => 'application/json' })
 
-          # Stub fetch_email_content to return the actual email content
           allow(EmailParser).to receive(:fetch_email_content).with(email_url).and_return(email_content)
-          # Stub HTTParty.get for the JSON link
           allow(HTTParty).to receive(:get).with(json_url).and_return(stubbed_response)
 
           result = EmailParser.extract_json(email_url)
@@ -114,9 +106,7 @@ RSpec.describe EmailParser do
             headers: { 'content-type' => 'application/json' }
           )
 
-          # Stub fetch_email_content to return the actual email content
           allow(EmailParser).to receive(:fetch_email_content).with(email_url).and_return(email_content)
-          # Stub HTTParty.get for the initial page link and nested JSON link
           allow(HTTParty).to receive(:get).with(page_url).and_return(page_response)
           allow(HTTParty).to receive(:get).with(nested_json_url).and_return(json_response)
 
