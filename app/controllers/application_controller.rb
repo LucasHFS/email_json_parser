@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # controllers/application_controller.rb
 require 'sinatra/base'
 require 'json'
@@ -6,13 +8,13 @@ require 'logger'
 class ApplicationController < Sinatra::Base
   configure do
     set :show_exceptions, false
-    set :logger, Logger.new(STDOUT)
+    set :logger, Logger.new($stdout)
   end
 
   before do
     content_type :json
 
-    if request.content_length&.to_i > 10_000
+    if request.content_length&.to_i&.> 10_000
       halt 413, { error: 'Request body too large' }.to_json
     end
 

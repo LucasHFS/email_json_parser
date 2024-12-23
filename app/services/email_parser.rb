@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mail'
 require 'httparty'
 require 'nokogiri'
@@ -35,9 +37,17 @@ class EmailParser
   end
 
   def self.fetch_content_from_url(url)
-    URI.open(url).read
-  rescue OpenURI::HTTPError => e
-    raise "Error fetching email from URL: #{e.message}"
+    uri = URI.parse(url)
+    response = Net::HTTP.get_response(uri)
+
+    case response
+    when Net::HTTPSuccess
+      response.body
+    when Net::HTTPRedirection
+      fetch_content_from_url(response['location']) # Follow the redirection
+    else
+      raise "Error fetching email from URL: #{response.message} (#{response.code})"
+    end
   rescue SocketError => e
     raise "Network error while fetching email from URL: #{e.message}"
   end
@@ -52,7 +62,7 @@ class EmailParser
 
   def self.extract_json_attachment(mail)
     attachment = mail.attachments.find { |att| att.filename&.downcase&.end_with?('.json') }
-    return JSON.parse(attachment.body.decoded) if attachment
+    JSON.parse(attachment.body.decoded) if attachment
   rescue JSON::ParserError => e
     raise "Invalid JSON in attachment: #{e.message}"
   end

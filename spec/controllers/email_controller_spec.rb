@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'json'
 require_relative '../../app'
 
 RSpec.describe EmailController do
-
   let(:fixtures_path) { 'spec/fixtures' }
 
   def app
@@ -11,10 +12,10 @@ RSpec.describe EmailController do
 
   describe 'POST /parse_email' do
     subject do
-       post '/parse_email', request_body, { 'CONTENT_TYPE' => 'application/json' }
-       last_response
+      post '/parse_email', request_body, { 'CONTENT_TYPE' => 'application/json' }
+      last_response
     end
-    
+
     let(:request_body) { { email_source: email_source }.to_json }
 
     context 'when email_source is provided' do
