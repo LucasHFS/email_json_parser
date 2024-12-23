@@ -1,0 +1,31 @@
+MIME-Version: 1.0
+Date: Mon, 23 Dec 2024 10:22:07 -0300
+Message-ID: <CADNeTAMpKwtsghuC=Q8bH6ZzgUkFaiFzmkpjR0oJ83wP6X-kEQ@mail.gmail.com>
+Subject: email_with_json_attachment
+From: Lucas Silva <lucas.silva.soft.eng@gmail.com>
+To: Lucash.Silva1612@gmail.com
+Content-Type: multipart/mixed; boundary="0000000000001cfb4b0629efe29b"
+
+--0000000000001cfb4b0629efe29b
+Content-Type: multipart/alternative; boundary="0000000000001cfb490629efe299"
+
+--0000000000001cfb490629efe299
+Content-Type: text/plain; charset="UTF-8"
+
+sample with json attached
+
+--0000000000001cfb490629efe299
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr">sample with json attached</div>
+
+--0000000000001cfb490629efe299--
+--0000000000001cfb4b0629efe29b
+Content-Type: application/json; name="example.json"
+Content-Disposition: attachment; filename="example.json"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_m512gee60
+Content-ID: <f_m512gee60>
+
+ewogICJrZXkiOiAidmFsdWUiCn0K
+--0000000000001cfb4b0629efe29b--

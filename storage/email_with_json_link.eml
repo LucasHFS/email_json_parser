@@ -1,0 +1,19 @@
+MIME-Version: 1.0
+Date: Mon, 23 Dec 2024 10:24:30 -0300
+Message-ID: <CADNeTAPt31AfamainaUTToy0coFe_A-T4SKBvxObQ0W5-okncw@mail.gmail.com>
+Subject: email_with_json_link
+From: Lucas Silva <lucas.silva.soft.eng@gmail.com>
+To: Lucash.Silva1612@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000a8ee6f0629efea0e"
+
+--000000000000a8ee6f0629efea0e
+Content-Type: text/plain; charset="UTF-8"
+
+My repos <https://api.github.com/users/lucashfs/repos>
+
+--000000000000a8ee6f0629efea0e
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr"><a href="https://api.github.com/users/lucashfs/repos">My repos</a><div><br></div></div>
+
+--000000000000a8ee6f0629efea0e--

@@ -1,0 +1,10 @@
+From: sender@example.com
+To: recipient@example.com
+Subject: Email with Nested JSON Link
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+This email contains a link to an HTML page:
+https://example.com/page
+
+The HTML page contains a link to a JSON file.
