@@ -1,13 +1,9 @@
 # Implementing The Real Challenge
 
----
-
 ## Requirements
-
 - Ruby (>= 3.3.5 recommended)
 - Bundler (>= 2.5.16)
 - Git (for cloning the repository)
-
 ---
 
 ## Getting Started
