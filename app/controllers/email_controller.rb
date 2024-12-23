@@ -25,7 +25,6 @@ class EmailController < ApplicationController
         halt 404, { error: 'JSON not found in the email' }.to_json
       end
     rescue StandardError => e
-      log_error(e)
       halt 500, { error: "An error occurred: #{e.message}" }.to_json
     end
   end
@@ -34,10 +33,6 @@ class EmailController < ApplicationController
 
   def halt_400_email_source_is_required
     halt 400, { error: 'Email source is required (URL or file path)' }.to_json
-  end
-
-  def log_error(error)
-    logger.error("#{Time.now} - Error: #{error.message}")
   end
 
   def valid_email_source?(source)
