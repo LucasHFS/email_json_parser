@@ -31,3 +31,22 @@ bundle install
 ```bash
 ruby app.rb
 ```
+
+## Example Requests
+
+### POST /parse_email
+#### Using email url source
+```bash
+curl -X POST "http://127.0.0.1:4567/parse_email" \
+-H "Content-Type: application/json" \
+-d '{ "email_source": "https://raw.githubusercontent.com/LucasHFS/email_json_parser/refs/heads/main/storage/email_with_json_attachment.eml" }'
+```
+
+#### Using file path source
+
+```bash
+curl -X POST "http://127.0.0.1:4567/parse_email" \
+-H "Content-Type: application/json" \
+-d '{ "email_source": "storage/email_with_json_link.eml" }'
+```
+
