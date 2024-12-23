@@ -10,11 +10,11 @@ class EmailParser
     email_content = fetch_email_content(email_source)
     mail = Mail.read_from_string(email_content)
 
-    json_attachment = extract_json_attachment(mail)
-    return json_attachment if json_attachment
+    json_from_attachment = extract_json_attachment(mail)
+    return json_from_attachment if json_from_attachment
 
-    json_link = extract_first_json_link(mail.body.decoded)
-    return json_link if json_link
+    json_from_link = extract_first_json_link(mail.body.decoded)
+    return json_from_link if json_from_link
 
     nil
   end
